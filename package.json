@@ -16,7 +16,8 @@
     "proxyquire": "^1.4.0"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha -R spec",
+    "test-all-coverage": "istanbul cover _mocha -- -R spec"
   },
   "repository": {
     "type": "git",
