@@ -4,24 +4,32 @@
   "description": "Port of ruby gem bugspots",
   "main": "index.js",
   "dependencies": {
-    "gift": "~0.4.2"
+    "gift": "~0.4.2",
+    "jshashtable": "^0.1.0",
+    "winston": "^0.9.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "istanbul": "^0.3.13",
+    "mocha": "^2.2.1",
+    "nock-exec": "^0.1.0",
+    "proxyquire": "^1.4.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/swang/bugspots"
+    "url": "https://github.com/joe-forbes/bugspots"
   },
   "keywords": [
     "bugspots",
     "git"
   ],
-  "author": "Shuan Wang",
+  "author": "Joe Forbes",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/swang/bugspots/issues"
+    "url": "https://github.com/joe-forbes/bugspots/issues"
   },
-  "homepage": "https://github.com/swang/bugspots"
+  "homepage": "https://github.com/joe-forbes/bugspots"
 }
