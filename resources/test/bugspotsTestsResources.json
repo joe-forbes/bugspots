@@ -1,0 +1,47 @@
+{
+  "commitSets": [
+    [
+      {
+        "id": "commit0",
+        "repo": {"path": "/path/to/repo"},
+        "message": "not to be included",
+        "committed_date": "2015-04-01T00:00:01.000Z",
+        "parentCommits": [{"id": "commit1"}]
+      },
+      {
+        "id": "commit1",
+        "message": "pretend this fixed something",
+        "repo": {"path": "/path/to/repo"},
+        "committed_date": "2015-03-31T00:00:01.000Z",
+        "parentCommits": [{"id": "commit2"}]
+      }
+    ],
+    [
+      {
+        "id": "commit2",
+        "message": "pretend this also fixed something",
+        "repo": {"path": "/path/to/repo"},
+        "committed_date": "2015-03-30T00:00:01.000Z",
+        "parentCommits": [{"id": "commit3"}]
+      }
+    ]
+  ],
+  "diffCommands": [
+    {
+      "commandText": "git diff commit1..commit2 --name-only",
+      "commandResponse": "file1\nfile2\nfile3\n"
+    },
+    {
+      "commandText": "git diff commit2..commit3 --name-only",
+      "commandResponse": "file1\nfile2\n"
+    },
+    {
+      "commandText": "echo ''",
+      "commandResponse": "\n"
+    },
+    {
+      "commandText": "echo ''",
+      "commandResponse": "\n"
+    }
+  ]
+}
