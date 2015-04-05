@@ -1,4 +1,14 @@
 {
+  "options": {
+    "repo": "/home/joe/git/github/django/django-trunk",
+    "branch": "stable/1.7.x",
+    "regexPattern": "\\b(fix(es|ed)?|close(s|d)?)\\b",
+    "regexOptions": "i",
+    "useRelativeDates": true,
+    "markerCommitId": "159f3bfafced8b546010caeaafabecf735598e34",
+    "depth": 10,
+    "batchSize": 5
+  },
   "branch": {
     "name": "stable/1.7.x",
     "commit": {
@@ -591,5 +601,84 @@
     "git diff cb48e192fb8928c5cf4ff3eb0cc34502f19734ff..eaf86858d40d40384375bd967b34818d0d8a9979 --name-only": "django/core/management/commands/makemigrations.py\\ndocs/releases/1.7.7.txt\\ntests/migrations/test_commands.py\\n",
     "git diff d0607a7eee75121527cd03c89de82a222e298eae..0094ad227d217091d2ec2db5b996b4e3e7719318 --name-only": "django/db/migrations/operations/models.py\\ndocs/releases/1.7.7.txt\\ntests/migrations/test_operations.py\\n",
     "echo ''": "\\n"
-  }
+  },
+  "hotspots": [
+    {
+      "file": "docs/releases/1.7.7.txt",
+      "score": 1.0066954203037333,
+      "fixCommits": 4,
+      "firstCommit": "2015-03-14T19:35:16.000Z",
+      "lastCommit": "2015-03-18T12:51:51.000Z"
+    },
+    {
+      "file": "docs/releases/1.6.11.txt",
+      "score": 0.9997199521140371,
+      "fixCommits": 2,
+      "firstCommit": "2015-03-18T12:51:21.000Z",
+      "lastCommit": "2015-03-18T12:51:51.000Z"
+    },
+    {
+      "file": "tests/utils_tests/test_html.py",
+      "score": 0.4999999906656915,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-18T12:51:51.000Z",
+      "lastCommit": "2015-03-18T12:51:51.000Z"
+    },
+    {
+      "file": "django/utils/html.py",
+      "score": 0.4999999906656915,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-18T12:51:51.000Z",
+      "lastCommit": "2015-03-18T12:51:51.000Z"
+    },
+    {
+      "file": "django/utils/http.py",
+      "score": 0.4997199614483456,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-18T12:51:21.000Z",
+      "lastCommit": "2015-03-18T12:51:21.000Z"
+    },
+    {
+      "file": "tests/utils_tests/test_http.py",
+      "score": 0.4997199614483456,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-18T12:51:21.000Z",
+      "lastCommit": "2015-03-18T12:51:21.000Z"
+    },
+    {
+      "file": "docs/releases/1.4.20.txt",
+      "score": 0.4997199614483456,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-18T12:51:21.000Z",
+      "lastCommit": "2015-03-18T12:51:21.000Z"
+    },
+    {
+      "file": "tests/migrations/test_commands.py",
+      "score": 0.006969324015093984,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-16T23:58:08.000Z",
+      "lastCommit": "2015-03-16T23:58:08.000Z"
+    },
+    {
+      "file": "django/core/management/commands/makemigrations.py",
+      "score": 0.006969324015093984,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-16T23:58:08.000Z",
+      "lastCommit": "2015-03-16T23:58:08.000Z"
+    },
+    {
+      "file": "tests/migrations/test_operations.py",
+      "score": 0.00000614417460221472,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-14T19:35:16.000Z",
+      "lastCommit": "2015-03-14T19:35:16.000Z"
+    },
+    {
+      "file": "django/db/migrations/operations/models.py",
+      "score": 0.00000614417460221472,
+      "fixCommits": 1,
+      "firstCommit": "2015-03-14T19:35:16.000Z",
+      "lastCommit": "2015-03-14T19:35:16.000Z"
+    }
+  ]
 }
