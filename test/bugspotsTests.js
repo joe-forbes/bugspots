@@ -30,7 +30,7 @@ var giftStub = function () {
       headCommitHandler(null, testResources.branch);
     },
 
-    commits: function (commitId, depthToRetrieve, commitListHandler) {
+    commits: function (commitId, depthToRetrieve, skip, commitListHandler) {
       commitSetIndex++;
       commitListHandler(null, testResources.commitSets[commitSetIndex]);
     }

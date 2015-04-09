@@ -5,7 +5,7 @@
     "regexPattern": "\\b(fix(es|ed)?|close(s|d)?)\\b",
     "regexOptions": "i",
     "useRelativeDates": true,
-    "markerCommitId": "159f3bfafced8b546010caeaafabecf735598e34",
+    "markerCommitId": "159f3bf",
     "depth": 10,
     "batchSize": 5
   },
