@@ -1,4 +1,6 @@
-var BugSpots = require('./index');
+'use strict';
+
+var BugSpots = require('./index')
 
 var z = new BugSpots();
 
