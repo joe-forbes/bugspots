@@ -5,18 +5,18 @@ var should = require('chai').should();
 var proxyquire = require('proxyquire');
 var testResourcesLoader = require('./testResourcesLoader');
 
-var testResources = testResourcesLoader.load('../resources/test/bugspotsTestResources2.json');
+var testResources = testResourcesLoader.load('../resources/test/bugspotsTestResources3.json');
 
 //require('../util/logger').addTarget({targetType: 'console'});
 
 var giftStub = function () {
   return {
-    branch: function (branch, headCommitHandler) {
-      headCommitHandler(null, testResources.branch);
-    },
-
     commits: function (commitId, depthToRetrieve, skip, commitListHandler) {
-      var commitIndex = testResources.commitLookup[commitId] + skip;
+      var myCommitId = commitId;
+      if (!testResources.commitLookup.hasOwnProperty(myCommitId)) {
+        myCommitId = testResources.commitAliases[myCommitId];
+      }
+      var commitIndex = testResources.commitLookup[myCommitId] + skip;
       var commitSet = testResources.commitArray.slice(commitIndex, commitIndex + depthToRetrieve);
       commitListHandler(null, commitSet);
     }
