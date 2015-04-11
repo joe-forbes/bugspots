@@ -3,26 +3,11 @@
 //noinspection JSUnusedGlobalSymbols
 var should = require('chai').should();
 var proxyquire = require('proxyquire');
+var testResourcesLoader = require('./testResourcesLoader');
 
-var testResources = require('../resources/test/bugspotsTestResources2.json');
+var testResources = testResourcesLoader.load('../resources/test/bugspotsTestResources2.json');
 
-testResources.commitSets.forEach(function (commitSet) {
-  commitSet.forEach(function (testCommit) {
-    testCommit.committed_date = new Date(testCommit.committed_date);
-    testCommit.parents = function () {
-      return testCommit.parentCommits;
-    }
-  });
-});
-
-testResources.hotspots.forEach(function (hotspot) {
-  hotspot.firstCommit = new Date(hotspot.firstCommit);
-  hotspot.lastCommit = new Date(hotspot.lastCommit);
-});
-
-testResources.options.regex = new RegExp(testResources.options.regexPattern, testResources.options.regexOptions);
-
-var commitSetIndex = -1;
+//require('../util/logger').addTarget({targetType: 'console'});
 
 var giftStub = function () {
   return {
@@ -31,8 +16,9 @@ var giftStub = function () {
     },
 
     commits: function (commitId, depthToRetrieve, skip, commitListHandler) {
-      commitSetIndex++;
-      commitListHandler(null, testResources.commitSets[commitSetIndex]);
+      var commitIndex = testResources.commitLookup[commitId] + skip;
+      var commitSet = testResources.commitArray.slice(commitIndex, commitIndex + depthToRetrieve);
+      commitListHandler(null, commitSet);
     }
   }
 };
@@ -56,8 +42,6 @@ describe('bugspots tests', function () {
 
   it('should not blow up when you call it.', function (done) {
     var scanner = new Bugspots();
-
-//    var options = testResources.options;
 
     var processResults = function (err, hotspots) {
       if (err) {
