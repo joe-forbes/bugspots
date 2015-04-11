@@ -4,20 +4,23 @@
 var should = require('chai').should();
 var proxyquire = require('proxyquire');
 var testResourcesLoader = require('./testResourcesLoader');
+var testResources = {};
 
-var testResources = testResourcesLoader.load('../resources/test/bugspotsTestResources3.json');
-
-//require('../util/logger').addTarget({targetType: 'console'});
+var logger = require('../util/logger');
+//logger.addTarget({targetType: 'console'});
 
 var giftStub = function () {
   return {
-    commits: function (commitId, depthToRetrieve, skip, commitListHandler) {
-      var myCommitId = commitId;
-      if (!testResources.commitLookup.hasOwnProperty(myCommitId)) {
-        myCommitId = testResources.commitAliases[myCommitId];
+    _getCommitIndex: function (commitId) {
+      if (!testResources.commitLookup.hasOwnProperty(commitId)) {
+        commitId = testResources.commitAliases[commitId];
       }
-      var commitIndex = testResources.commitLookup[myCommitId] + skip;
-      var commitSet = testResources.commitArray.slice(commitIndex, commitIndex + depthToRetrieve);
+      var commitIndex = testResources.commitLookup[commitId];
+      return commitIndex;
+    },
+    commits: function (commitId, depthToRetrieve, skip, commitListHandler) {
+      var startIndex = this._getCommitIndex(commitId) + skip;
+      var commitSet = testResources.commitArray.slice(startIndex, startIndex + depthToRetrieve);
       commitListHandler(null, commitSet);
     }
   }
@@ -27,6 +30,9 @@ var giftStub = function () {
 var childProcessStub = {
   exec: function (cmd, opt, callback) {
     function go() {
+      if (!testResources.diffCommands.hasOwnProperty(cmd)) {
+        logger.warn('Results not found for cmd: ' + cmd);
+      }
       callback(null, testResources.diffCommands[cmd].replace(/\\n/g, '\n'));
     }
     setTimeout(go, 100);
@@ -38,20 +44,42 @@ var Bugspots = proxyquire('../lib/bugspots', {
    'child_process': childProcessStub
 });
 
-describe('bugspots tests', function () {
+describe('Bugspots basic tests', function () {
 
-  it('should not blow up when you call it.', function (done) {
+  beforeEach(function(){
+    testResources = testResourcesLoader.load('../resources/test/bugspotsTestResources.json');
+  });
+
+  it('should look for "master" if no "branch" option supplied.', function (done) {
+    var testCaseName = 'defaultBranchTest';
+
+    logger.info(testCaseName);
+    delete testResources.testCases[testCaseName].options.branch;
     var scanner = new Bugspots();
 
     var processResults = function (err, hotspots) {
       if (err) {
         throw err;
       }
-      hotspots.should.eql(testResources.hotspots);
+      hotspots.should.eql(testResources.testCases[testCaseName].hotspots);
       done();
     };
-    testResources.options.regex.should.eql(/\b(fix(es|ed)?|close(s|d)?)\b/i);
-    scanner.scan(testResources.options, processResults);
+    scanner.scan(testResources.testCases[testCaseName].options, processResults);
+  });
+
+  it('should work for at least one configuration.', function (done) {
+    var testCaseName = 'basicTest';
+    logger.info(testCaseName);
+    var scanner = new Bugspots();
+
+    var processResults = function (err, hotspots) {
+      if (err) {
+        throw err;
+      }
+      hotspots.should.eql(testResources.testCases[testCaseName].hotspots);
+      done();
+    };
+    scanner.scan(testResources.testCases[testCaseName].options, processResults);
   });
 
 });

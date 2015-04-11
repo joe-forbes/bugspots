@@ -1,47 +1,718 @@
 {
-  "commitSets": [
-    [
-      {
-        "id": "commit0",
-        "repo": {"path": "/path/to/repo"},
-        "message": "not to be included",
-        "committed_date": "2015-04-01T00:00:01.000Z",
-        "parentCommits": [{"id": "commit1"}]
+  "testCases": {
+    "basicTest": {
+      "options": {
+        "repo": "/home/joe/git/github/django/django-trunk",
+        "branch": "159f3bf",
+        "useRelativeDates": true,
+        "regexPattern": "\\b(fix(es|ed)?|close(s|d)?)\\b",
+        "regexOptions": "i",
+        "markerCommitId": "159f3bf",
+        "depth": 10,
+        "batchSize": 5
       },
-      {
-        "id": "commit1",
-        "message": "pretend this fixed something",
-        "repo": {"path": "/path/to/repo"},
-        "committed_date": "2015-03-31T00:00:01.000Z",
-        "parentCommits": [{"id": "commit2"}]
-      }
-    ],
-    [
-      {
-        "id": "commit2",
-        "message": "pretend this also fixed something",
-        "repo": {"path": "/path/to/repo"},
-        "committed_date": "2015-03-30T00:00:01.000Z",
-        "parentCommits": [{"id": "commit3"}]
-      }
-    ]
-  ],
-  "diffCommands": [
-    {
-      "commandText": "git diff commit1..commit2 --name-only",
-      "commandResponse": "file1\nfile2\nfile3\n"
+      "hotspots": [
+        {
+          "file": "docs/releases/1.7.7.txt",
+          "score": 1.0066954203037333,
+          "fixCommits": 4,
+          "firstCommit": "2015-03-14T19:35:16.000Z",
+          "lastCommit": "2015-03-18T12:51:51.000Z"
+        },
+        {
+          "file": "docs/releases/1.6.11.txt",
+          "score": 0.9997199521140371,
+          "fixCommits": 2,
+          "firstCommit": "2015-03-18T12:51:21.000Z",
+          "lastCommit": "2015-03-18T12:51:51.000Z"
+        },
+        {
+          "file": "tests/utils_tests/test_html.py",
+          "score": 0.4999999906656915,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-18T12:51:51.000Z",
+          "lastCommit": "2015-03-18T12:51:51.000Z"
+        },
+        {
+          "file": "django/utils/html.py",
+          "score": 0.4999999906656915,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-18T12:51:51.000Z",
+          "lastCommit": "2015-03-18T12:51:51.000Z"
+        },
+        {
+          "file": "django/utils/http.py",
+          "score": 0.4997199614483456,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-18T12:51:21.000Z",
+          "lastCommit": "2015-03-18T12:51:21.000Z"
+        },
+        {
+          "file": "tests/utils_tests/test_http.py",
+          "score": 0.4997199614483456,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-18T12:51:21.000Z",
+          "lastCommit": "2015-03-18T12:51:21.000Z"
+        },
+        {
+          "file": "docs/releases/1.4.20.txt",
+          "score": 0.4997199614483456,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-18T12:51:21.000Z",
+          "lastCommit": "2015-03-18T12:51:21.000Z"
+        },
+        {
+          "file": "tests/migrations/test_commands.py",
+          "score": 0.006969324015093984,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-16T23:58:08.000Z",
+          "lastCommit": "2015-03-16T23:58:08.000Z"
+        },
+        {
+          "file": "django/core/management/commands/makemigrations.py",
+          "score": 0.006969324015093984,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-16T23:58:08.000Z",
+          "lastCommit": "2015-03-16T23:58:08.000Z"
+        },
+        {
+          "file": "tests/migrations/test_operations.py",
+          "score": 0.00000614417460221472,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-14T19:35:16.000Z",
+          "lastCommit": "2015-03-14T19:35:16.000Z"
+        },
+        {
+          "file": "django/db/migrations/operations/models.py",
+          "score": 0.00000614417460221472,
+          "fixCommits": 1,
+          "firstCommit": "2015-03-14T19:35:16.000Z",
+          "lastCommit": "2015-03-14T19:35:16.000Z"
+        }
+      ]
     },
-    {
-      "commandText": "git diff commit2..commit3 --name-only",
-      "commandResponse": "file1\nfile2\n"
-    },
-    {
-      "commandText": "echo ''",
-      "commandResponse": "\n"
-    },
-    {
-      "commandText": "echo ''",
-      "commandResponse": "\n"
+    "defaultBranchTest": {
+      "options": {
+        "repo": "/home/joe/git/github/django/django-trunk",
+        "useRelativeDates": true,
+        "depth": 10,
+        "batchSize": 5
+      },
+      "hotspots": [
+        {
+          "file": "docs/topics/forms/modelforms.txt",
+          "firstCommit": "2015-03-28T11:41:00.000Z",
+          "fixCommits": 2,
+          "lastCommit": "2015-03-28T12:59:53.000Z",
+          "score": 0.9795223043580291
+        },
+        {
+          "file": "docs/topics/auth/default.txt",
+          "firstCommit": "2015-03-24T14:30:33.000Z",
+          "fixCommits": 2,
+          "lastCommit": "2015-03-28T11:51:40.000Z",
+          "score": 0.4850475892653957
+        },
+        {
+          "file": "docs/intro/tutorial02.txt",
+          "firstCommit": "2015-03-27T13:58:47.000Z",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-27T13:58:47.000Z",
+          "score": 0.1923352624809061
+        },
+        {
+          "file": "docs/topics/logging.txt",
+          "firstCommit": "2015-03-24T16:26:29.000Z",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-24T16:26:29.000Z",
+          "score": 0.0031108055372451216
+        },
+        {
+          "file": "docs/topics/i18n/translation.txt",
+          "firstCommit": "2015-03-20T19:47:04.000Z",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-20T19:47:04.000Z",
+          "score": 0.00000967682635080811
+        },
+        {
+          "file": "docs/ref/settings.txt",
+          "firstCommit": "2015-03-20T12:29:52.000Z",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-20T12:29:52.000Z",
+          "score": 0.00000614417460221472
+        }
+      ]
     }
-  ]
+  },
+  "commitAliases": {
+    "master": "7c7d29adbeb078655f9133a14d865955d1d26048",
+    "stable/1.7.x": "7c7d29adbeb078655f9133a14d865955d1d26048",
+    "159f3bf": "159f3bfafced8b546010caeaafabecf735598e34"
+  },
+  "commits": [
+    {
+      "id": "7c7d29adbeb078655f9133a14d865955d1d26048",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-28T12:54:59.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-28T12:59:53.000Z",
+      "message": "[1.7.x] Fixed #24541 -- Clarified ModelFormSet's handling of initial data.\n\nBackport of 6de3a1e2c34ae5bfcdec3ebbf3d682aa578ecae0 from master",
+      "parentCommits": [{"id": "be865fe62e4d177743e3500effc0907b98c357a1"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "be865fe62e4d177743e3500effc0907b98c357a1",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-28T11:49:03.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-28T11:51:40.000Z",
+      "message": "[1.7.x] Fixed syntax highlighting in docs/topics/auth/default.txt\n\nBackport of 3e132406e3a95b3fe54e75129013e10bf3e9e86a from master",
+      "parentCommits": [{"id": "bd542cbff6800f1f8551395e02720d849f39b06e"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "bd542cbff6800f1f8551395e02720d849f39b06e",
+      "author": {
+        "name": "SaeX",
+        "email": "SaeX@users.noreply.github.com",
+        "hash": "d45e06093228544fa43baa3317dc0089"
+      },
+      "authored_date": "2015-03-28T10:06:40.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-28T11:41:00.000Z",
+      "message": "[1.7.x] Fixed typo in docs/topics/forms/modelforms.txt\n\nBackport of 19e41a9799079ddae3ba94f95d25577ab4232037 from master",
+      "parentCommits": [{"id": "da07f4b08fbf42fd71f15487d33301bb689f2655"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "da07f4b08fbf42fd71f15487d33301bb689f2655",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-27T13:57:58.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-27T13:58:47.000Z",
+      "message": "[1.7.x] Fixed #24519 -- Clarified location of templates directory in tutorial 2.\n\nBackport of 2acf9d099d29f45c829ee0127e55b7cfdd201995 from master",
+      "parentCommits": [{"id": "db4e1607542aeecc14282fcf71d1e6b6dfefd524"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "db4e1607542aeecc14282fcf71d1e6b6dfefd524",
+      "author": {
+        "name": "David Seddon",
+        "email": "david@seddonym.me",
+        "hash": "a57d6314ec23ed10a2635276e40fae7c"
+      },
+      "authored_date": "2015-03-25T17:38:56.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-25T17:44:21.000Z",
+      "message": "[1.7.x] Corrected typo in documentation\n\nBackport of 0f6f80c2e7736ec4e2aa40287fe8c37ffff0a783 from master",
+      "parentCommits": [{"id": "0121fb814807763541245b3c131ccace3f18ac0e"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "0121fb814807763541245b3c131ccace3f18ac0e",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-21T17:59:23.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-24T16:26:29.000Z",
+      "message": "[1.7.x] Fixed #24361 -- Clarified docs on reconfiguring logging.\n\nThanks Tuttle for the report and draft patch, and Carl Meyer for\nhelp and review.\n\nBackport of c633667da3605208ea5fc137f5322c599f48da69 from master",
+      "parentCommits": [{"id": "388dc33f5bfdd7035f4a32c4ec1eea269eb88870"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "388dc33f5bfdd7035f4a32c4ec1eea269eb88870",
+      "author": {
+        "name": "Matt Seymour",
+        "email": "matt@mattseymour.net",
+        "hash": "22ab02bfa11ab1bcef927094e34a5ce5"
+      },
+      "authored_date": "2015-03-22T10:47:18.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-24T14:30:33.000Z",
+      "message": "[1.7.x] Fixed #24501 -- Improved auth.decorators.user_passes_test() example.\n\nBackport of fca14cd3f27a01f7ba1fe32ea9587fa75b85713a from master",
+      "parentCommits": [{"id": "b46643a47e82fb56d589b9584877f823dabc3fdf"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "b46643a47e82fb56d589b9584877f823dabc3fdf",
+      "author": {
+        "name": "David Seddon",
+        "email": "david@seddonym.me",
+        "hash": "a57d6314ec23ed10a2635276e40fae7c"
+      },
+      "authored_date": "2015-01-12T16:11:11.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-20T21:52:05.000Z",
+      "message": "[1.7.x] Refs #14645 -- Documented bug with exclude() and multi-value relations\n\nBackport of 6770b7ecd208a0746f181e54202fb829460c6490 from master",
+      "parentCommits": [{"id": "5cad259c12bed21ad80b68be1ec15ec3c48b6a3e"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "5cad259c12bed21ad80b68be1ec15ec3c48b6a3e",
+      "author": {
+        "name": "Claude Paroz",
+        "email": "claude@2xlibre.net",
+        "hash": "cf4198670f0073174b475634964b576b"
+      },
+      "authored_date": "2015-03-20T18:59:10.000Z",
+      "committer": {
+        "name": "Claude Paroz",
+        "email": "claude@2xlibre.net",
+        "hash": "cf4198670f0073174b475634964b576b"
+      },
+      "committed_date": "2015-03-20T19:47:04.000Z",
+      "message": "[1.7.x] Fixed #23520 -- Explained that custom plural forms should be avoided\n\nThanks aruseni for the report.\nBackport of 556eb67701 from master.",
+      "parentCommits": [{"id": "b2a80f9053acb151a753a3a1e264a65ab8a5d806"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "b2a80f9053acb151a753a3a1e264a65ab8a5d806",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-20T12:23:55.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-20T12:29:52.000Z",
+      "message": "[1.7.x] Fixed #24503 -- Corrected docs on how LANGUAGE_CODE works as a fallback.",
+      "parentCommits": [{"id": "a81c224ad1e7ee22cb37e299bf2a399fb8e67bc3"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "a81c224ad1e7ee22cb37e299bf2a399fb8e67bc3",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-19T00:17:41.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-19T00:17:41.000Z",
+      "message": "[1.7.x] Post-release version bump.",
+      "parentCommits": [{"id": "159f3bfafced8b546010caeaafabecf735598e34"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "159f3bfafced8b546010caeaafabecf735598e34",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-18T12:52:17.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:52:17.000Z",
+      "message": "[1.7.x] Bumped version for 1.7.7 release.",
+      "parentCommits": [{"id": "2a4113dbd532ce952308992633d802dc169a75f1"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "2a4113dbd532ce952308992633d802dc169a75f1",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-10T00:05:13.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:51:51.000Z",
+      "message": "[1.7.x] Made is_safe_url() reject URLs that start with control characters.\n\nThis is a security fix; disclosure to follow shortly.",
+      "parentCommits": [{"id": "e63363f8e075fa8d66326ad6a1cc3391cc95cd97"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "e63363f8e075fa8d66326ad6a1cc3391cc95cd97",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-04T13:11:25.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:51:21.000Z",
+      "message": "[1.7.x] Fixed an infinite loop possibility in strip_tags().\n\nThis is a security fix; disclosure to follow shortly.",
+      "parentCommits": [{"id": "26fd7262746a5d7b1a94abf8a16cba4218cc7267"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "26fd7262746a5d7b1a94abf8a16cba4218cc7267",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-04T12:49:12.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:50:49.000Z",
+      "message": "[1.7.x] Added stub release notes for security releases.",
+      "parentCommits": [{"id": "11892713710382d82482897a33edf27b1ac1f722"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "159f3bfafced8b546010caeaafabecf735598e34",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-18T12:52:17.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:52:17.000Z",
+      "message": "[1.7.x] Bumped version for 1.7.7 release.",
+      "parentCommits": [{"id": "2a4113dbd532ce952308992633d802dc169a75f1"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "2a4113dbd532ce952308992633d802dc169a75f1",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-10T00:05:13.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:51:51.000Z",
+      "message": "[1.7.x] Made is_safe_url() reject URLs that start with control characters.\n\nThis is a security fix; disclosure to follow shortly.",
+      "parentCommits": [{"id": "e63363f8e075fa8d66326ad6a1cc3391cc95cd97"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "e63363f8e075fa8d66326ad6a1cc3391cc95cd97",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-04T13:11:25.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:51:21.000Z",
+      "message": "[1.7.x] Fixed an infinite loop possibility in strip_tags().\n\nThis is a security fix; disclosure to follow shortly.",
+      "parentCommits": [{"id": "26fd7262746a5d7b1a94abf8a16cba4218cc7267"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "26fd7262746a5d7b1a94abf8a16cba4218cc7267",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-04T12:49:12.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-18T12:50:49.000Z",
+      "message": "[1.7.x] Added stub release notes for security releases.",
+      "parentCommits": [{"id": "11892713710382d82482897a33edf27b1ac1f722"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "11892713710382d82482897a33edf27b1ac1f722",
+      "author": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "authored_date": "2015-03-17T17:41:11.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-17T17:42:57.000Z",
+      "message": "[1.7.x] Refs #24487 -- Added upgrade tips about removal of SortedDict.\n\nThanks Pascal Chambon for the initial patch.\n\nBackport of c5c8751147d41913a05e86097ea29ccc9fc2e5be from master",
+      "parentCommits": [{"id": "cb48e192fb8928c5cf4ff3eb0cc34502f19734ff"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "cb48e192fb8928c5cf4ff3eb0cc34502f19734ff",
+      "author": {
+        "name": "John Giannelos",
+        "email": "johngiannelos@gmail.com",
+        "hash": "93ffa313b6a253835a915722f59ba9de"
+      },
+      "authored_date": "2015-03-02T22:13:14.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-16T23:58:08.000Z",
+      "message": "[1.7.x] Fixed #24427 -- Stopped writing migration files in dry run mode when merging.\n\nAlso added display of migration to stdout when verbosity=3.\n\nBackport of 8758a63ddbbf7a2626bd84d50cfe83b477e8de0a from master",
+      "parentCommits": [{"id": "eaf86858d40d40384375bd967b34818d0d8a9979"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "eaf86858d40d40384375bd967b34818d0d8a9979",
+      "author": {
+        "name": "Preston Timmons",
+        "email": "prestontimmons@gmail.com",
+        "hash": "3720b893805199115d4c984032f4e17f"
+      },
+      "authored_date": "2015-03-16T15:55:43.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-16T17:13:57.000Z",
+      "message": "[1.7.x] Documented Context.get() method.\n\nBackport of 4d9414098bd98aacd241827a01f6ad2dff71f113 from master",
+      "parentCommits": [{"id": "36fb3b39de312a1283d2d08f1ed3b602c8ca7f84"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "36fb3b39de312a1283d2d08f1ed3b602c8ca7f84",
+      "author": {
+        "name": "HerHde",
+        "email": "admin@herh.de",
+        "hash": "e45bf640b4a51ff68d542eeb492ebb1b"
+      },
+      "authored_date": "2015-03-15T14:51:24.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-16T12:25:03.000Z",
+      "message": "[1.7.x] Added missing punctuation in some comments in tutorial 5.\n\nBackport of 39573a11db694a584de6ca2a858fa05ec4ea13e1 from master",
+      "parentCommits": [{"id": "2583ee2a7ef18f20e8814c68df45c2021a3aa220"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "2583ee2a7ef18f20e8814c68df45c2021a3aa220",
+      "author": {
+        "name": "Steven Das",
+        "email": "DasAllFolks@users.noreply.github.com",
+        "hash": "b088b50dbec23c8ae44ac6d8f15056e1"
+      },
+      "authored_date": "2015-03-16T06:05:43.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-16T12:17:15.000Z",
+      "message": "[1.7.x] Added comma to improve readability in 1.7 release notes.\n\nBackport of 4f494ed0c60cdfc44b65aeea7f42f6b7245c03af from master",
+      "parentCommits": [{"id": "d0607a7eee75121527cd03c89de82a222e298eae"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    },
+    {
+      "id": "d0607a7eee75121527cd03c89de82a222e298eae",
+      "author": {
+        "name": "Matthew Wilkes",
+        "email": "git@matthewwilkes.name",
+        "hash": "599518cc9ce9afa2bb08caebf6d98e54"
+      },
+      "authored_date": "2015-02-16T19:42:11.000Z",
+      "committer": {
+        "name": "Tim Graham",
+        "email": "timograham@gmail.com",
+        "hash": "fa170777273ca7b235bdde7d80e9f8a6"
+      },
+      "committed_date": "2015-03-14T19:35:16.000Z",
+      "message": "[1.7.x] Fixed #24354 -- Prevented repointing of relations on superclasses when migrating a subclass's name change",
+      "parentCommits": [{"id": "0094ad227d217091d2ec2db5b996b4e3e7719318"}],
+      "repo": {
+        "path": "/home/joe/git/github/django/django-trunk",
+        "bare": false,
+        "dot_git": "/home/joe/git/github/django/django-trunk/.git"
+      }
+    }
+  ],
+  "diffCommands": {
+    "git diff 7c7d29adbeb078655f9133a14d865955d1d26048..be865fe62e4d177743e3500effc0907b98c357a1 --name-only": "docs/topics/forms/modelforms.txt\\n",
+    "git diff 2a4113dbd532ce952308992633d802dc169a75f1..e63363f8e075fa8d66326ad6a1cc3391cc95cd97 --name-only": "django/utils/html.py\\ndocs/releases/1.6.11.txt\\ndocs/releases/1.7.7.txt\\ntests/utils_tests/test_html.py\\n",
+    "git diff e63363f8e075fa8d66326ad6a1cc3391cc95cd97..26fd7262746a5d7b1a94abf8a16cba4218cc7267 --name-only": "django/utils/http.py\\ndocs/releases/1.4.20.txt\\ndocs/releases/1.6.11.txt\\ndocs/releases/1.7.7.txt\\ntests/utils_tests/test_http.py\\n",
+    "git diff cb48e192fb8928c5cf4ff3eb0cc34502f19734ff..eaf86858d40d40384375bd967b34818d0d8a9979 --name-only": "django/core/management/commands/makemigrations.py\\ndocs/releases/1.7.7.txt\\ntests/migrations/test_commands.py\\n",
+    "git diff d0607a7eee75121527cd03c89de82a222e298eae..0094ad227d217091d2ec2db5b996b4e3e7719318 --name-only": "django/db/migrations/operations/models.py\\ndocs/releases/1.7.7.txt\\ntests/migrations/test_operations.py\\n",
+    "git diff be865fe62e4d177743e3500effc0907b98c357a1..bd542cbff6800f1f8551395e02720d849f39b06e --name-only": "docs/topics/auth/default.txt\\n",
+    "git diff bd542cbff6800f1f8551395e02720d849f39b06e..da07f4b08fbf42fd71f15487d33301bb689f2655 --name-only": "docs/topics/forms/modelforms.txt\\n",
+    "git diff da07f4b08fbf42fd71f15487d33301bb689f2655..db4e1607542aeecc14282fcf71d1e6b6dfefd524 --name-only": "docs/intro/tutorial02.txt\\n",
+    "git diff 0121fb814807763541245b3c131ccace3f18ac0e..388dc33f5bfdd7035f4a32c4ec1eea269eb88870 --name-only": "docs/topics/logging.txt\\n",
+    "git diff 388dc33f5bfdd7035f4a32c4ec1eea269eb88870..b46643a47e82fb56d589b9584877f823dabc3fdf --name-only": "docs/topics/auth/default.txt\\n",
+    "git diff 5cad259c12bed21ad80b68be1ec15ec3c48b6a3e..b2a80f9053acb151a753a3a1e264a65ab8a5d806 --name-only": "docs/topics/i18n/translation.txt\\n",
+    "git diff b2a80f9053acb151a753a3a1e264a65ab8a5d806..a81c224ad1e7ee22cb37e299bf2a399fb8e67bc3 --name-only": "docs/ref/settings.txt\\n"
+  }
 }

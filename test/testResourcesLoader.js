@@ -1,11 +1,11 @@
 var testResourcesLoader = {
-  load : function(file) {
+  load: function (file) {
     var testResources = require(file);
 
     testResources.commitArray = [];
     testResources.commitLookup = {};
 
-    testResources.commits.forEach(function(testCommit){
+    testResources.commits.forEach(function (testCommit) {
       testResources.commitArray.push(testCommit);
       testResources.commitLookup[testCommit.id] = testResources.commitArray.length - 1;
       testCommit.committed_date = new Date(testCommit.committed_date);
@@ -13,12 +13,20 @@ var testResourcesLoader = {
         return testCommit.parentCommits;
       }
     });
-    testResources.hotspots.forEach(function (hotspot) {
-      hotspot.firstCommit = new Date(hotspot.firstCommit);
-      hotspot.lastCommit = new Date(hotspot.lastCommit);
-    });
 
-    testResources.options.regex = new RegExp(testResources.options.regexPattern, testResources.options.regexOptions);
+    var names = Object.getOwnPropertyNames(testResources.testCases);
+    for (var i = 0; i < names.length; i++) {
+      var testCase = testResources.testCases[names[i]];
+      testCase.hotspots.forEach(function (hotspot) {
+        hotspot.firstCommit = new Date(hotspot.firstCommit);
+        hotspot.lastCommit = new Date(hotspot.lastCommit);
+      });
+
+      if (testCase.options.hasOwnProperty('regexPattern')) {
+        testCase.options.regex = new RegExp(testCase.options.regexPattern, testCase.options.regexOptions);
+      }
+
+    }
 
     return testResources;
   }
