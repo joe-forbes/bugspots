@@ -3,13 +3,12 @@
     "basicTest": {
       "options": {
         "repo": "/home/joe/git/github/django/django-trunk",
-        "branch": "159f3bf",
+        "segmentHeadCommitIdentifier": "159f3bf",
         "useRelativeDates": true,
         "regexSpec": {
           "pattern": "\\b(fix(es|ed)?|close(s|d)?)\\b",
           "options": "i"
         },
-        "markerCommitId": "159f3bf",
         "depth": 10,
         "batchSize": 5
       },
