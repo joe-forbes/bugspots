@@ -22,8 +22,10 @@ var testResourcesLoader = {
         hotspot.lastCommit = new Date(hotspot.lastCommit);
       });
 
-      if (testCase.options.hasOwnProperty('regexPattern')) {
-        testCase.options.regex = new RegExp(testCase.options.regexPattern, testCase.options.regexOptions);
+      if (testCase.options.hasOwnProperty('regexSpec')) {
+        var pattern = testCase.options.regexSpec.pattern,
+          options = testCase.options.regexSpec.options;
+        testCase.options.regex = new RegExp(pattern, options);
       }
 
     }

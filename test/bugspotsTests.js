@@ -7,7 +7,17 @@ var testResourcesLoader = require('./testResourcesLoader');
 var testResources = {};
 
 var logger = require('../util/logger');
-//logger.addTarget({targetType: 'console'});
+logger.addTarget({
+  targetType: 'file', targetConfig: {
+    level: 'debug',
+    filename: './logs/test.log',
+    handleExceptions: true,
+    json: false,
+    maxsize: 5242880, // 5MB
+    maxFiles: 5,
+    colorize: false
+  }
+});
 
 var giftStub = function () {
   return {
@@ -32,21 +42,24 @@ var childProcessStub = {
     function go() {
       if (!testResources.diffCommands.hasOwnProperty(cmd)) {
         logger.warn('Results not found for cmd: ' + cmd);
+        callback(new Error('Diff results not found for cmd: ' + cmd));
+        return;
       }
       callback(null, testResources.diffCommands[cmd].replace(/\\n/g, '\n'));
     }
+
     setTimeout(go, 100);
   }
 };
 
 var Bugspots = proxyquire('../lib/bugspots', {
   'gift': giftStub,
-   'child_process': childProcessStub
+  'child_process': childProcessStub
 });
 
 describe('Bugspots basic tests', function () {
 
-  beforeEach(function(){
+  beforeEach(function () {
     testResources = testResourcesLoader.load('../resources/test/bugspotsTestResources.json');
   });
 

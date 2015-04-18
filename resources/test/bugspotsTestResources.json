@@ -5,8 +5,10 @@
         "repo": "/home/joe/git/github/django/django-trunk",
         "branch": "159f3bf",
         "useRelativeDates": true,
-        "regexPattern": "\\b(fix(es|ed)?|close(s|d)?)\\b",
-        "regexOptions": "i",
+        "regexSpec": {
+          "pattern": "\\b(fix(es|ed)?|close(s|d)?)\\b",
+          "options": "i"
+        },
         "markerCommitId": "159f3bf",
         "depth": 10,
         "batchSize": 5
