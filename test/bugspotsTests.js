@@ -67,7 +67,6 @@ describe('Bugspots basic tests', function () {
     var testCaseName = 'defaultBranchTest';
 
     logger.info(testCaseName);
-    delete testResources.testCases[testCaseName].options.branch;
     var scanner = new Bugspots();
 
     var processResults = function (err, hotspots) {
