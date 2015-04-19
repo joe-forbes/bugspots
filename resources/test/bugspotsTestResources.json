@@ -143,6 +143,58 @@
           "score": 0.00000614417460221472
         }
       ]
+    },
+    "tailCommitIdentifier": {
+      "options": {
+        "repo": "/home/joe/git/github/django/django-trunk",
+        "useRelativeDates": true,
+        "depth": 20,
+        "batchSize": 5
+      },
+      "hotspots": [
+        {
+          "file": "docs/topics/forms/modelforms.txt",
+          "firstCommit": "2015-03-28T11:41:00.000",
+          "fixCommits": 2,
+          "lastCommit": "2015-03-28T12:59:53.000",
+          "score": 0.9835816031062683
+        },
+        {
+          "file": "docs/topics/auth/default.txt",
+          "firstCommit": "2015-03-24T14:30:33.000",
+          "fixCommits": 2,
+          "lastCommit": "2015-03-28T11:51:40.000",
+          "score": 0.4946224191030919
+        },
+        {
+          "file": "docs/intro/tutorial02.txt",
+          "firstCommit": "2015-03-27T13:58:47.000",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-27T13:58:47.000",
+          "score": 0.24044615128426988
+        },
+        {
+          "file": "docs/topics/logging.txt",
+          "firstCommit": "2015-03-24T16:26:29.000",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-24T16:26:29.000",
+          "score": 0.00970758676130857
+        },
+        {
+          "file": "docs/topics/i18n/translation.txt",
+          "firstCommit": "2015-03-20T19:47:04.000",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-20T19:47:04.000",
+          "score": 0.00009560441020480647
+        },
+        {
+          "file": "docs/ref/settings.txt",
+          "firstCommit": "2015-03-20T12:29:52.000",
+          "fixCommits": 1,
+          "lastCommit": "2015-03-20T12:29:52.000",
+          "score": 0.000066428791490189
+        }
+      ]
     }
   },
   "commitAliases": {

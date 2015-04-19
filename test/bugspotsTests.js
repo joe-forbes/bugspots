@@ -25,8 +25,7 @@ var giftStub = function () {
       if (!testResources.commitLookup.hasOwnProperty(commitId)) {
         commitId = testResources.commitAliases[commitId];
       }
-      var commitIndex = testResources.commitLookup[commitId];
-      return commitIndex;
+      return testResources.commitLookup[commitId];
     },
     commits: function (commitId, depthToRetrieve, skip, commitListHandler) {
       var startIndex = this._getCommitIndex(commitId) + skip;
@@ -89,6 +88,21 @@ describe('Bugspots basic tests', function () {
         throw err;
       }
       hotspots.should.eql(testResources.testCases[testCaseName].hotspots);
+      done();
+    };
+    scanner.scan(testResources.testCases[testCaseName].options, processResults);
+  });
+
+  it('should retrieve fewer hotspots if the tail commit is found.', function (done) {
+    var testCaseName = 'tailCommitIdentifier';
+    logger.info(testCaseName);
+    var scanner = new Bugspots();
+
+    var processResults = function (err, hotspots) {
+      if (err) {
+        throw err;
+      }
+      hotspots.length.should.equal(6);
       done();
     };
     scanner.scan(testResources.testCases[testCaseName].options, processResults);
