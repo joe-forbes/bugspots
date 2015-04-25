@@ -94,7 +94,7 @@ describe('Bugspots basic tests', function () {
   });
 
   it('should retrieve fewer hotspots if the tail commit is found.', function (done) {
-    var testCaseName = 'tailCommitIdentifier';
+    var testCaseName = 'tailCommitHotspotCount';
     logger.info(testCaseName);
     var scanner = new Bugspots();
 
@@ -103,6 +103,36 @@ describe('Bugspots basic tests', function () {
         throw err;
       }
       hotspots.length.should.equal(6);
+      done();
+    };
+    scanner.scan(testResources.testCases[testCaseName].options, processResults);
+  });
+
+  it('should get the right hotspots if the tail commit is found.', function (done) {
+    var testCaseName = 'tailCommitHotspots';
+    logger.info(testCaseName);
+    var scanner = new Bugspots();
+
+    var processResults = function (err, hotspots) {
+      if (err) {
+        throw err;
+      }
+      hotspots.should.eql(testResources.testCases[testCaseName].hotspots);
+      done();
+    };
+    scanner.scan(testResources.testCases[testCaseName].options, processResults);
+  });
+
+  it('should translate tail commit alias to tail commit id.', function (done) {
+    var testCaseName = 'tailCommitAlias';
+    logger.info(testCaseName);
+    var scanner = new Bugspots();
+
+    var processResults = function (err, hotspots) {
+      if (err) {
+        throw err;
+      }
+      hotspots.should.eql(testResources.testCases[testCaseName].hotspots);
       done();
     };
     scanner.scan(testResources.testCases[testCaseName].options, processResults);
