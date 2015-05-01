@@ -29,5 +29,7 @@ Joe Forbes (joe.forbes@gmail.com)
 
 #credits
 based on Shuang Wang's bugspots Node.js package (http://github.com/swang/bugspots),
+
 inspired by Ilya Grigorik's Ruby gem (http://github.com/igrigorik/bugspots),
+
 inspired by Chris Louis and Rong Ou's Google Engineering Tools blog post "Bug Prediction at Google" (http://google-engtools.blogspot.com/2011/12/bug-prediction-at-google.html)
