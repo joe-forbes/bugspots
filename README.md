@@ -10,7 +10,7 @@ not yet supported.
 ### #scan(opts, callback, [commitFilterCallback])
 
 **opts** is an object containing the following:
-```json
+```JavaScript
 {
   repo: <repo>,
   headId: <commitish> || 'master',
@@ -22,7 +22,7 @@ not yet supported.
 }
 ```
 **callback** is a function with the signature (err, hotspots). When bugspots rankings are completed, this function is passed an array of hotspot objects with the following structure:
-```json
+```JavaScript
 {
   file: <path/within/repo>,
   score: <number>,
@@ -32,7 +32,7 @@ not yet supported.
 }
 ```
 **commitFilterCallback** is a function with the signature (commit). This is called for each commit being analyzed. If a truthy value is returned by this function for a given commit, that commit will be treated as a bugfix commit for bugspots rankings. The commit object is part of the commits array returned by a call to the gift npm package's repo.commits() method, and (at some time recently) had at least the following properties that might be useful in determining if a commit should be included or not:
-```json
+```JavaScript
 {
   id: <commitHash>,
   committed_date: <date>,
