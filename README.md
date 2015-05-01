@@ -1,11 +1,8 @@
-# bugspots-jsf
-Bugspots-jsf is a bug location predictor that implements the "Bugspots" algorithm.
+# bugspots
+bugspots is a bug location predictor that implements the "Bugspots" algorithm.
 
 # install
-
-```
-npm install bugspots
-```
+not yet supported.
 
 # documentation
 
